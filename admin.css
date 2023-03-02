@@ -1,0 +1,133 @@
+.page-content {
+    display: flex;
+    width: 100%;
+    height: 95vh;
+}
+
+.page-content>section {
+    padding: 20px;
+    width: 100%;
+    border-radius: 6px;
+    display: flex;
+}
+
+.page-content>section>.users {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 30%;
+    text-align: -webkit-center;
+}
+
+.page-content>section>.users>.user {
+    width: 70%;
+    display: flex;
+    gap: 5px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+    justify-content: center;
+    background-color: #a25c00;
+}
+
+.page-content>section>.users>.user span:not(:first-child) {
+    color: #6e1818;
+    font-size: 18px;
+}
+
+.page-content>section>.message-box {
+    width: 100%;
+}
+
+.message-box {
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.message-box .message-start {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.message-box .message-start span {
+    font-size: 24px;
+    color: black;
+}
+
+.message-box .message-foot {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    background: white;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.message-box .message-foot div:first-child {
+    width: 100%;
+}
+
+.message-box .message-foot textarea {
+    width: 99%;
+    border:none;
+    outline: none;
+    resize: none;
+    border-radius: 6px;
+}
+
+.message-box .message-foot button {
+    padding: 10px;
+    background: white;
+    border: 1px solid black;
+    background: orange;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+.message-box .message-body-container {
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.message-box .message-body .message-body-container .message{
+    background: #a3a3a3;;
+    border: 1px solid black;
+    border-radius: 6px;
+    color: white;
+    padding: 5px;
+}
+
+.message-box .message-body .message-body-container .message-self{
+    background: green;
+    border: 1px solid black;
+    border-radius: 6px;
+    color: white;
+    padding: 5px;
+    flex-direction: row-reverse;
+    position: relative;
+    left: 24%;
+}
+
+.msg {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.msg span:not(:first-child){
+    font-size: 12px;
+    align-self: flex-end;
+}
+
+.message-body {
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

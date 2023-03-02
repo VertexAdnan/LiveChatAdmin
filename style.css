@@ -1,0 +1,116 @@
+.chat-app {
+    position: fixed;
+    width: 300px;
+    height: 500px;
+    border: 1px solid;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    right: 30px;
+    margin: 0;
+    top: auto;
+    bottom: 0;
+}
+
+.chat-app .chat-head {
+    background: linear-gradient(95deg, rgb(229, 179, 0) 20%, rgb(255, 156, 72) 80%);
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.chat-head-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.chat-head-act,
+.chat-head-act span {
+    align-self: center;
+}
+
+.chat-head span {
+    text-shadow: 2px 2px 13px #000000;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.chat-foot {
+    position: absolute;
+    top: 451px;
+    width: 100%;
+}
+
+.chat-foot>.foot-content {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+}
+
+.chat-foot>.foot-content textarea {
+    width: 96%;
+    border:none;
+    resize:none;
+}
+
+.chat-foot>.foot-content textarea:focus {
+    outline: none !important;
+}
+
+.chat-foot >.foot-content > div:first-child {
+    width: 100%;
+}
+
+.chat-foot >.foot-content .send-btn {
+    border-radius: 15px;
+    padding: 8px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+}
+
+.chat-body {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.chat-body .self {
+    float: right;
+    padding: 9px;
+}
+
+.chat-body .target {
+    float: right;
+    padding: 9px;
+}
+
+.chat-body .target .msg {
+    background-color: gray;
+    color: white;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.chat-body .self .msg {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.date {
+    font-size: 10px;
+    place-self: end;
+}

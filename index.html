@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="chat-app">
+        <div class="chat-app-contain">
+            <div class="chat-head">
+                <div class="chat-head-info">
+                    <span>Lütfen mesajınızı girin</span>
+                    <span>Temsilciler çevrimiçi</span>
+                </div>
+                <div class="chat-head-act">
+                    <span>X</span>
+                </div>
+            </div>
+            <div class="chat-body">
+                <div class="chat-message target">
+                    <div class="msg">
+                        <span>Merhaba, Hoş geldiniz. Öncelikle görüşmelerimizin kalite standartları gereği kayıt edildiği bilgisini paylaşmak istiyorum. Size nasıl yardımcı olabilirim?</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-foot">
+                <div class="foot-content">
+                    <div>
+                        <textarea name="" placeholder="Lütfen mesajınızı yazın"></textarea>
+                    </div>
+                    <div>
+                        <button type="button" onclick="sendMessage()" class="send-btn"><i class="fa fa-paper-plane"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.js"
+        integrity="sha512-Y8KodDCDqst1e8z0EGKiqEQq3T8NszmgW2HvsC6+tlNw7kxYxHTLl5Iw/gqZj/6qhZdBt+jYyOsybgSAiB9OOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        const socket = io('http://localhost:3000?customer_id=23&customer_name=TEST', { autoConnect: true });
+
+        const sendMessage = () => {
+            const msg = $(".foot-content textarea").val();
+
+            const d = new Date();
+            let minutes = d.getMinutes();
+            let hrs = d.getHours();
+
+            socket.emit('msg_to_admin', msg, hrs, minutes);
+
+            let html = `<div class="chat-message self">
+                    <div class="msg">
+                        <span>${msg}</span>
+                        <span class="date">${hrs}:${minutes}</span>
+                    </div>
+                </div>`
+
+            $(".chat-body").append(html)
+
+            $(".foot-content textarea").val('');
+        }
+
+        socket.on('set_users', (users) => {
+            let html = ``;
+            customers = users;
+
+
+            $(".users").append(customers)
+        })
+
+        socket.on('customer_msg', (data) => {
+            let html = ``;
+
+            html += `<div class="chat-message target">
+                    <div class="msg">
+                        <span>${data.msg}</span>
+                        <span class="date">15:15</span>
+                    </div>
+                </div>`
+
+            $(".chat-body").append(html)
+        })
+
+        $(window).on("keyup", (key) => {
+            if(key.keyCode == 13){
+                sendMessage();
+            }
+        })
+    </script>
+</body>
+
+</html>
